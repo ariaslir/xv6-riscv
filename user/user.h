@@ -1,4 +1,5 @@
 #define SBRK_ERROR ((char *)-1)
+#include "types.h"
 
 struct stat;
 
