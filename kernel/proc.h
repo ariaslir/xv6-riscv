@@ -101,4 +101,7 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+
+  // variable for tracing in syscalltrace
+  int traceValue; // created a vareiable called traceValue to store the value of the trace system call
 };

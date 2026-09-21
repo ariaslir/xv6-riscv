@@ -110,3 +110,10 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+//implementing syscalltrace
+uint64
+sys_syscalltrace(void)
+{
+  
+}
