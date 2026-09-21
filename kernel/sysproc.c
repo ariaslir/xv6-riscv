@@ -115,5 +115,13 @@ sys_uptime(void)
 uint64
 sys_syscalltrace(void)
 {
-  
+  //declaring a variable to hold the extracted value
+  int check;
+  //check = myproc()->pid;
+  //calling argint to store the value in check address
+  argint(0, &check);
+  // assigning check to the tracevalue
+  myproc()->traceValue = check;
+
+  return 0;
 }
