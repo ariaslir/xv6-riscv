@@ -137,15 +137,15 @@ void
 syscall(void)
 {
   int num;
-  struct proc *p = myproc();
+  struct proc *p = myproc(); // this is the process that made the syscall
 
-  num = p->trapframe->a7;
-  if (num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+  num = p->trapframe->a7; // the syscall number the stub put in a7
+  if (num > 0 && num < NELEM(syscalls) && syscalls[num]) { // safey check for validity of syscall number
     // Use num to lookup the system call function for num, call it,
     // and store its return value in p->trapframe->a0
     p->trapframe->a0 = syscalls[num]();
   } else {
     printk("%d %s: unknown sys call %d\n", p->pid, p->name, num);
-    p->trapframe->a0 = -1;
+    p->trapframe->a0 = -1; // tell user program failed
   }
 }
