@@ -272,6 +272,7 @@ kfork(void)
   if (uvmcopy(p->pagetable, np->pagetable, p->sz) < 0) {
     freeproc(np);
     release(&np->lock);
+    np->traceValue = 0; // set the traceValue to 0 for the new process
     return -1;
   }
   np->sz = p->sz;
