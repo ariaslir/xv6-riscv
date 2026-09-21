@@ -14,4 +14,5 @@ int main(){
     printf("Parent ID: ", pid);
     printf("Child ID: ", getpid());
 
+    return 0;
 }
