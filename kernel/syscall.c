@@ -148,8 +148,8 @@ syscall(void)
     // Use num to lookup the system call function for num, call it,
     // and store its return value in p->trapframe->a0
     if(p->traceValue > 0){
-      printk("System Call: ", myproc()->name);
-      printk("Process ID: ", myproc()->pid);
+      printk("System Call: %s\n", myproc()->name);
+      printk("Process ID: %d\n", myproc()->pid);
     }
     p->trapframe->a0 = syscalls[num]();
   } else {
