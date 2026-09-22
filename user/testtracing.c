@@ -12,7 +12,16 @@ int main(){
     sbrk(50);
     getpid();
     pause(50);
-    fork();
+    int val = fork();
+    if(val == 0){
+        printf("Child Tracking value: 0\n")
+        uptime();
+        exit(0);
+    }
+    else{
+        printf("Parent Tracking value: 1\n");
+    }
+   
     
     uptime();
 
