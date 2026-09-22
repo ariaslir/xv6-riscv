@@ -3,11 +3,10 @@
 int main(){
 
     int pid = getpid();
-    printf("Process ID: %d\n", pid);
     
     //uptime();
     printf("Process Uptime: %d\n", uptime());
-    printf("Testing syscalltrace() Implementation...\n");
+    printf("Testing syscalltrace() implementation...\n");
     syscalltrace(1);
 
     sbrk(50);
@@ -15,13 +14,14 @@ int main(){
     int checkForkVal = fork();
     
     if(checkForkVal > 0){
-        printf("Parent Process ID: %d\n", pid);
+        printf("Parent Tracking Value: %d\n", myproc()->traceValue);
     }
     else{
-        printf("Child Process ID: %d\n", getpid());
+        printf("Child Tracking Value: %d\n", myproc()->traceValue);
         uptime();
         exit(0);
     }
+    uptime();
 
     return 0;
 }
