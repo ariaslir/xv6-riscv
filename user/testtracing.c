@@ -14,7 +14,7 @@ int main(){
     pause(50);
     int val = fork();
     if(val == 0){
-        printf("Child Tracking value: 0\n")
+        printf("Child Tracking value: 0\n");
         uptime();
         exit(0);
     }
