@@ -14,10 +14,10 @@ int main(){
     int checkForkVal = fork();
     
     if(checkForkVal > 0){
-        printf("Parent Tracking Value: %d\n", myproc()->traceValue);
+        printf("Parent Tracking Value:");
     }
     else{
-        printf("Child Tracking Value: %d\n", myproc()->traceValue);
+        printf("Child Tracking Value:");
         uptime();
         exit(0);
     }
