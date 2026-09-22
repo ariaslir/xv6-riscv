@@ -7,9 +7,11 @@ int main(){
     
     //uptime();
     printf("Process Uptime: %d\n", uptime());
-    printf("Testing syscalltrace() Implementation...");
+    printf("Testing syscalltrace() Implementation...\n");
     syscalltrace(1);
 
+    sbrk(50);
+    pause(50);
     int checkForkVal = fork();
     
     if(checkForkVal > 0){
@@ -17,6 +19,7 @@ int main(){
     }
     else{
         printf("Child Process ID: %d\n", getpid());
+        uptime();
         exit(0);
     }
 
