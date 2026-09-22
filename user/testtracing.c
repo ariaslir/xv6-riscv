@@ -10,6 +10,7 @@ int main(){
     syscalltrace(1);
 
     sbrk(50);
+    getpid();
     pause(50);
     fork();
     
