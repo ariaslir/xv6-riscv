@@ -2,7 +2,7 @@
 
 int main(){
 
-    int pid = getpid();
+    //int pid = getpid();
     
     //uptime();
     printf("Process Uptime: %d\n", uptime());
