@@ -12,14 +12,7 @@ int main(){
     sbrk(50);
     getpid();
     pause(50);
-    int forkVal = fork();
-
-    if(forkVal > 0){
-        printf("Parent Value: %d\n", forkVal);
-    }
-    else{
-        printf("Child Value: %d\n", forkVal);
-    }
+    fork();
 
     return 0;
 }
