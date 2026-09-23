@@ -177,7 +177,7 @@ syscall(void)
       // need to see how to get actual names, probably make a whole new array of strings
       // that has the names stored
       int temp = p->traceValue;
-      p->traceValue = 0;
+      // p->traceValue = 0;
       printk("Syscall Name: %s\n", syscall_names[num]);
       printk("Process PID: %d\n", myproc()->pid);
       p->traceValue = temp;
