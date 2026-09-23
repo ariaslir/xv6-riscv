@@ -176,11 +176,8 @@ syscall(void)
     if(p->traceValue > 0){
       // need to see how to get actual names, probably make a whole new array of strings
       // that has the names stored
-      //int temp = p->traceValue;
-      // p->traceValue = 0;
       printk("Syscall Name: %s\n", syscall_names[num]);
       printk("Process PID: %d\n", myproc()->pid);
-      //p->traceValue = temp;
     }
     p->trapframe->a0 = syscalls[num]();
   } else {
