@@ -1,5 +1,5 @@
 #include "user.h"
-#include "proc.h"
+#include "kernel/proc.h"
 
 int main(){
 
