@@ -277,7 +277,6 @@ kfork(void)
     return -1;
   }
   np->sz = p->sz;
-  //np->traceValue = 0; // put the traceValue to 0 for the child process outside of the if loop
   // copy saved user registers.
   *(np->trapframe) = *(p->trapframe);
 
