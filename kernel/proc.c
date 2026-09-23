@@ -268,7 +268,7 @@ kfork(void)
     return -1;
   }
 
-  //printk("Parent Tracking Value: %d\n", np->traceValue);
+  printk("Parent Tracking Value: %d\n", p->traceValue);
 
   // Copy user memory from parent to child.
   if (uvmcopy(p->pagetable, np->pagetable, p->sz) < 0) {
@@ -283,7 +283,7 @@ kfork(void)
 
   // Cause fork to return 0 in the child.
   np->trapframe->a0 = 0;
-  //printk("Child Tracking Value: %d\n", np->traceValue);
+  printk("Child Tracking Value: %d\n", np->traceValue);
 
   // increment reference counts on open file descriptors.
   for (i = 0; i < NOFILE; i++)
