@@ -180,7 +180,7 @@ syscall(void)
       // p->traceValue = 0;
       printk("Syscall Name: %s\n", syscall_names[num]);
       printk("Process PID: %d\n", myproc()->pid);
-      p->traceValue = temp;
+      //p->traceValue = temp;
     }
     p->trapframe->a0 = syscalls[num]();
   } else {
