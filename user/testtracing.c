@@ -13,6 +13,7 @@ int main(){
     getpid();
     pause(50);
     fork();
+    uptime();//added uptime to match output
 
     return 0;
 }
