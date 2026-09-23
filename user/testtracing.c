@@ -1,5 +1,5 @@
 #include "user.h"
-#include "kernel/proc.h"
+
 
 int main(){
 
@@ -16,12 +16,12 @@ int main(){
     getpid();
     pause(50);
     fork();
-    if(p->traceValue > 0){
-        printf("Parent Tracking Value: %d\n", p->traceValue);
-    }
-    else{
-        printf("Child Tracking Value: %d\n", p->traceValue);
-    }
+    // if(p->traceValue > 0){
+    //     printf("Parent Tracking Value: %d\n", p->traceValue);
+    // }
+    // else{
+    //     printf("Child Tracking Value: %d\n", p->traceValue);
+    // }
     uptime();//added uptime to match output
 
     return 0;
