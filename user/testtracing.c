@@ -12,7 +12,7 @@ int main(){
     pause(10);
     fork();
     uptime();//added uptime to match output
-    exit();
+    exit(0);
 
     return 0;
 }
