@@ -4,8 +4,8 @@
 int main(){
 
     //int pid = getpid();
-    struct proc *np;
-    struct proc *p = myproc();
+    // struct proc *np;
+    // struct proc *p = myproc();
     
     //uptime();
     printf("Process Uptime: %d\n", uptime());
