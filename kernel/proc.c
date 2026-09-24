@@ -267,7 +267,7 @@ kfork(void)
   if ((np = allocproc()) == 0) {
     return -1;
   }
-
+  // only enabled when fork is called to print parent tracking
   if(myproc()->traceValue > 0){
     printk("Parent Tracking Value: %d\n", p->traceValue);
   }
@@ -285,6 +285,7 @@ kfork(void)
 
   // Cause fork to return 0 in the child.
   np->trapframe->a0 = 0;
+  // check child tracking only when fork is called
   if(myproc()->traceValue){
     if(np){
       printk("Child Tracking Value: %d\n", np->traceValue);
