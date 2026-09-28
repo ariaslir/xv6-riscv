@@ -261,6 +261,8 @@ kfork(void)
   int i, pid;
   struct proc *np;
   struct proc *p = myproc();
+  p->priority = 10; // setting priority to default 10
+  np->num_epoch_slots = 0; // setting default num_epoch_slots to 0 for the child process
 
   // Allocate process.
   if ((np = allocproc()) == 0) {
