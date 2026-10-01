@@ -20,6 +20,10 @@ static void freeproc(struct proc *p);
 
 extern char trampoline[]; // trampoline.S
 
+// global variable set for debug mode
+int mode = 0; // 0 for run mode, 1 for debug mode
+
+
 // helps ensure that wakeups of wait()ing
 // parents are not lost. helps obey the
 // memory model when using p->parent.
