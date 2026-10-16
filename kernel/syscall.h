@@ -22,3 +22,4 @@
 #define SYS_close  21
 #define SYS_sync   22
 #define SYS_debug  23 // defines sys_debug
+#define SYS_priority_fork 24 // defines sys_priority_fork
