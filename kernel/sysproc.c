@@ -132,9 +132,9 @@ sys_priority_fork(void)
 {
   int priority;
   
-  argint(0, &priority);
+  argint(0, &priority);  // getting priority
   
-  if(priority < 0 || priority > 19) return -1;
-  
+  if(priority < 0 || priority > 19) return -1; // validates its 0-19 range
+
   return priority_fork(priority);
 }
