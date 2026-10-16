@@ -111,8 +111,17 @@ sys_uptime(void)
   return xticks;
 }
 
-uint64
-sys_debug(int enable)
-{
+extern int mode; // to grab the mode int from proc.c
 
+uint64
+sys_debug(void)
+{
+  int enable;
+
+  argint(0, &enable); // the value from the user process will be passed onto enable
+  
+  if(enable < 0 || enable > 1) return -1; // error
+
+  mode = enable;
+  return 0;
 }
