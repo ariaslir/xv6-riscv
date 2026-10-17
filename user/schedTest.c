@@ -1,15 +1,5 @@
-// #include "kernel/types.h"
+#include "kernel/types.h"
 #include "user/user.h"
-
-// implementing a power function
-int raiseTo(int number, int exponent){
-    int result = 1; // need to set to one or else the number will always be 0
-    for(int i = 0; i < exponent; i++){
-        // raising to the power of the number of digits
-        result *= number;
-    }
-    return result;
-}
 
 // function to get the number of digits in the number
 int numDigits(int n){
@@ -20,6 +10,16 @@ int numDigits(int n){
         n /= 10;
     }
     return count;
+}
+
+// implementing a power function
+int raiseTo(int number, int exponent){
+    int result = 1; // need to set to one or else the number will always be 0
+    for(int i = 0; i < exponent; i++){
+        // raising to the power of the number of digits
+        result *= number;
+    }
+    return result;
 }
 
 // Implementing Armstrong number check
