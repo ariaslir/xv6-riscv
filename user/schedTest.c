@@ -53,9 +53,7 @@ int main(){
     debug(1); // turn debug mode on
 
     for(int i = 0; i < 8; i++){
-        int pid = priority_fork(priorities[i]);
-        printf("Forking a process with PID: %d and Priorities: %d\n", pid, priorities[i]);
-        
+        int pid = priority_fork(priorities[i]);        
         if(pid < 0){
             printf("Failure");
             break;
@@ -65,17 +63,10 @@ int main(){
             printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
             exit(0);
         }
+        printf("Forking a process with PID: %d and Priorities: %d\n", pid, priorities[i]);
+
     }
     // printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
-    // 1 wait per parent
-    wait(0);
-    wait(0);
-    wait(0);
-    wait(0);
-    wait(0);
-    wait(0);
-    wait(0);
-    wait(0);
 
     exit(0);
 }
