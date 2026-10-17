@@ -1,28 +1,5 @@
-#include "kernel/types.h"
+// #include "kernel/types.h"
 #include "user/user.h"
-
-// Implementing Armstrong number check
-int armstrongCheck(int LIMIT){
-    // 
-    int isArmstrong = 0; // number we will be returning
-    int sumOfDigits = 0; //variable to get total ssum
-    for(int i = 2; i <= LIMIT; i++){
-        // doing calculation here
-        int temp = i; // temp variable to seperate number into single digits
-        int countOfDigits = numDigits(i); // variable that holds the count of seperate digits
-        // checking digits  
-        while(temp > 0){
-            int digit = temp % 10;
-            sumOfDigits += raiseTo(digit, countOfDigits);
-            i /= 10;
-        }
-        // if the original number is equal to the sumOfDigits, increment count++
-        if(i == sumOfDigits){
-            isArmstrong++;
-        }
-    }
-    return isArmstrong;
-}
 
 // implementing a power function
 int raiseTo(int number, int exponent){
@@ -45,6 +22,31 @@ int numDigits(int n){
     return count;
 }
 
-int main(){
+// Implementing Armstrong number check
+int armstrongCheck(int LIMIT){
+    // 
+    int isArmstrong = 0; // number we will be returning
+    int sumOfDigits = 0; //variable to get total ssum
+    for(int i = 2; i <= LIMIT; i++){
+        // doing calculation here
+        int temp = i; // temp variable to seperate number into single digits
+        int countOfDigits = numDigits(i); // variable that holds the count of seperate digits
+        // checking digits  
+        while(temp > 0){
+            int digit = temp % 10;
+            sumOfDigits += raiseTo(digit, countOfDigits);
+            temp /= 10;
+        }
+        // if the original number is equal to the sumOfDigits, increment count++
+        if(i == sumOfDigits){
+            isArmstrong++;
+        }
+    }
+    return isArmstrong;
+}
 
+int main(){ 
+    int LIMIT = 1000000;
+
+    printf("Number of Armstrong Numbers between 2 and 1000000: ", armstrongCheck(LIMIT));
 }
