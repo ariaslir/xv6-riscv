@@ -4,7 +4,7 @@
 // Implementing Armstrong number check
 int armstrongCheck(int LIMIT){
     // 
-    int count = 0; // number we will be returning
+    int isArmstrong = 0; // number we will be returning
     int sumOfDigits = 0; //variable to get total ssum
     for(int i = 2; i <= LIMIT; i++){
         // doing calculation here
@@ -16,11 +16,12 @@ int armstrongCheck(int LIMIT){
             sumOfDigits += raiseTo(digit, countOfDigits);
             i /= 10;
         }
+        // if the original number is equal to the sumOfDigits, increment count++
         if(i == sumOfDigits){
-            count++;
+            isArmstrong++;
         }
     }
-    return count;
+    return isArmstrong;
 }
 
 // implementing a power function
