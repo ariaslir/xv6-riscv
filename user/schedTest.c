@@ -30,6 +30,7 @@ int armstrongCheck(int LIMIT){
     for(int i = 2; i <= LIMIT; i++){
         // doing calculation here
         int temp = i; // temp variable to seperate number into single digits
+        sumOfDigits = 0; // reset
         int countOfDigits = numDigits(i); // variable that holds the count of seperate digits
         // checking digits  
         while(temp > 0){
@@ -48,7 +49,7 @@ int armstrongCheck(int LIMIT){
 int main(){ 
     int LIMIT = 1000000;
 
-    printf("Number of Armstrong Numbers between 2 and 1000000: %d", armstrongCheck(LIMIT));
+    printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
 
     exit(0);
 }
