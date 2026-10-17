@@ -54,6 +54,8 @@ int main(){
 
     for(int i = 0; i < 8; i++){
         int pid = priority_fork(priorities[i]);
+        printf("Forking a process with PID: %d and Priorities: %d\n", pid, priorities[i]);
+        
         if(pid < 0){
             printf("Failure");
             break;
