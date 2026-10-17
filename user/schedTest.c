@@ -47,7 +47,7 @@ int armstrongCheck(int LIMIT){
 }
 
 int main(){ 
-    int LIMIT = 1000000;
+    //int LIMIT = 1000000;
     // creating an array to set each priority for the forks
     int priorities[8] = {0, 0, 5, 5, 10, 10, 15, 15};
     debug(1); // turn debug mode on
