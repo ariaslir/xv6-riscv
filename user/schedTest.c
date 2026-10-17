@@ -48,5 +48,7 @@ int armstrongCheck(int LIMIT){
 int main(){ 
     int LIMIT = 1000000;
 
-    printf("Number of Armstrong Numbers between 2 and 1000000: ", armstrongCheck(LIMIT));
+    printf("Number of Armstrong Numbers between 2 and 1000000: %d", armstrongCheck(LIMIT));
+
+    exit(0);
 }
