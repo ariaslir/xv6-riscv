@@ -67,6 +67,15 @@ int main(){
         }
     }
     // printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
+    // 1 wait per parent
+    wait(0);
+    wait(0);
+    wait(0);
+    wait(0);
+    wait(0);
+    wait(0);
+    wait(0);
+    wait(0);
 
     exit(0);
 }
