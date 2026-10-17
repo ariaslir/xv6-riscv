@@ -60,7 +60,7 @@ int main(){
         }
         if(pid == 0){
             // in child fork
-            printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
+            //printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
             exit(0);
         }
         printf("Forking a process with PID: %d and Priorities: %d\n", pid, priorities[i]);
