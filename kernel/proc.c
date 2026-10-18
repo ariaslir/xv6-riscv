@@ -580,13 +580,18 @@ scheduler(void)
     for(p = proc; p < &proc[NPROC]; p++){
       acquire(&p->lock);
       int slotsLeft = p->num_epoch_slots;
-      printk("Process: %s\n", p->name);
-      printk("PID: %d\n", p->pid);
-      printk("Priority: %d\n", p->priority);
-      printk("Num Slots: %d\n\n", total);
+
       // main changes from the scheduler happen here
       if(p->state == RUNNABLE && slotsLeft > 0){
         int slots = slotsLeft; // variable holder to hold original amount of slots
+
+        // need to check mode again??
+        if(mode == 1){
+          printk("Process: %s\n", p->name);
+          printk("PID: %d\n", p->pid);
+          printk("Priority: %d\n", p->priority);
+          printk("Num Slots: %d\n\n", total);
+        }
         // running per slots left
         while(p->state == RUNNABLE && slotsLeft > 0){
           slotsLeft--; // decrement the slots per used slot
