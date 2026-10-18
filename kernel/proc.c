@@ -556,6 +556,11 @@ scheduler(void)
       release(&p->lock); // always
     }
 
+    if(total == 0){
+      asm volatile("wfi");
+      continue;
+    }
+
     epoch++; // counter for when the scheduler found a RUNNABLE process
     if(mode == 1){
       printk("====================Epoch #%d=======================\n", epoch);
