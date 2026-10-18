@@ -599,6 +599,7 @@ scheduler(void)
           c->proc = 0;
           found = 1;
         }
+        p->num_epoch_slots = 0;
       }
       release(&p->lock); // always
     }
