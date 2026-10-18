@@ -52,7 +52,7 @@ int main(){
     int priorities[8] = {0, 0, 5, 5, 10, 10, 15, 15};
     debug(1); // turn debug mode on
 
-    printf("Enter debug mode")
+    //printf("Enter debug mode")
 
     for(int i = 0; i < 8; i++){
         int pid = priority_fork(priorities[i]);        
