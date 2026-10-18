@@ -573,10 +573,6 @@ scheduler(void)
       if(p->state == RUNNABLE){
         p->num_epoch_slots = 40 * (20 - p->priority) / total;
       }
-      printk("Process: %s\n", p->name);
-      printk("PID: %d\n", p->pid);
-      printk("Priority: %d\n", p->priority);
-      printk("Num Slots: %d\n\n", p->num_epoch_slots);
       release(&p->lock);
     }
     // final loop and will print the data here
@@ -584,7 +580,10 @@ scheduler(void)
     for(p = proc; p < &proc[NPROC]; p++){
       acquire(&p->lock);
       int slotsLeft = p->num_epoch_slots;
-      
+      printk("Process: %s\n", p->name);
+      printk("PID: %d\n", p->pid);
+      printk("Priority: %d\n", p->priority);
+      printk("Num Slots: %d\n\n", total);
       // main changes from the scheduler happen here
       if(p->state == RUNNABLE && slotsLeft > 0){
         int slots = slotsLeft; // variable holder to hold original amount of slots
