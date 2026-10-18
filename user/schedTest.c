@@ -47,7 +47,7 @@ int armstrongCheck(int LIMIT){
 }
 
 int main(){ 
-    //int LIMIT = 1000000;
+    int LIMIT = 1000000;
     // creating an array to set each priority for the forks
     int priorities[8] = {0, 0, 5, 5, 10, 10, 15, 15};
     debug(1); // turn debug mode on
@@ -60,13 +60,14 @@ int main(){
         }
         if(pid == 0){
             // in child fork
-            //printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
+            printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
             exit(0);
         }
         printf("Forking a process with PID: %d and Priorities: %d\n", pid, priorities[i]);
 
     }
     // printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
-
+    // reset debug
+    debug(0);
     exit(0);
 }

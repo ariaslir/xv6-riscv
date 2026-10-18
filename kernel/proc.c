@@ -485,45 +485,107 @@ kwait(uint64 addr)
 //  - swtch to start running that process.
 //  - eventually that process transfers control
 //    via swtch back to the scheduler.
+// ORIGINAL SCHEDULER
+// void
+// scheduler(void)
+// {
+//   struct proc *p;
+//   struct cpu *c = mycpu();
+
+//   c->proc = 0;
+//   for (;;) {
+//     // The most recent process to run may have had interrupts
+//     // turned off; enable them to avoid a deadlock if all
+//     // processes are waiting. Then turn them back off
+//     // to avoid a possible race between an interrupt
+//     // and wfi.
+//     intr_on();
+//     intr_off();
+
+//     int found = 0;
+//     for (p = proc; p < &proc[NPROC]; p++) {
+//       acquire(&p->lock);
+//       if (p->state == RUNNABLE) {
+//         // Switch to chosen process.  It is the process's job
+//         // to release its lock and then reacquire it
+//         // before jumping back to us.
+//         p->state = RUNNING;
+//         c->proc = p;
+//         swtch(&c->context, &p->context);
+
+//         // Don't re-enable interrupts on release.
+//         mycpu()->intena = 0;
+
+//         // Process is done running for now.
+//         // It should have changed its p->state before coming back.
+//         c->proc = 0;
+//         found = 1;
+//       }
+//       release(&p->lock);
+//     }
+//     if (found == 0) {
+//       // nothing to run; stop running on this core until an interrupt.
+//       asm volatile("wfi");
+//     }
+//   }
+// }
+
+// NEW SCHEDULER 
+// PROPORTIONALLY FAIR ROUND ROBIN SCHEDULER
 void
 scheduler(void)
 {
   struct proc *p;
   struct cpu *c = mycpu();
+  int epoch = 0; // for epoch calculations
 
   c->proc = 0;
-  for (;;) {
-    // The most recent process to run may have had interrupts
-    // turned off; enable them to avoid a deadlock if all
-    // processes are waiting. Then turn them back off
-    // to avoid a possible race between an interrupt
-    // and wfi.
+  for(;;){
+
     intr_on();
     intr_off();
-
     int found = 0;
-    for (p = proc; p < &proc[NPROC]; p++) {
+    int total = 0; // will hold sum of runnable process
+
+    // 20-p_i in formula
+    for(p = proc; p < &proc[NPROC]; p++){
+      acquire(&p->lock); // always 
+      if(p->state == RUNNABLE){
+        total += 20 - p->priority; // denominator (20-p_i) for every RUNNABLE process
+      }
+      release(&p->lock); // always
+    }
+
+    epoch++; // counter for when the scheduler found a RUNNABLE process
+    if(mode == 1){
+      printf("====================Epoch #%d=======================\n", epoch);
+    }
+    // full formula using above total declaration
+    for(p = proc; p < &proc[NPROC]; p++){
       acquire(&p->lock);
-      if (p->state == RUNNABLE) {
-        // Switch to chosen process.  It is the process's job
-        // to release its lock and then reacquire it
-        // before jumping back to us.
+      if(p->state == RUNNABLE){
+        p->num_epoch_slots = 40 * (20 - p->priority) / total;
+      }
+      release(&p->lock);
+    }
+
+    for(p = proc; p < &proc[NPROC]; p++){
+      acquire(&p->lock);
+      int slotsLeft = p->num_epoch_slots;
+
+      // main changes from the scheduler happen here
+      if(p->state == RUNNABLE && slotsLeft > 0){
         p->state = RUNNING;
         c->proc = p;
         swtch(&c->context, &p->context);
 
-        // Don't re-enable interrupts on release.
         mycpu()->intena = 0;
-
-        // Process is done running for now.
-        // It should have changed its p->state before coming back.
         c->proc = 0;
         found = 1;
       }
-      release(&p->lock);
+      release(&p->lock); // always
     }
-    if (found == 0) {
-      // nothing to run; stop running on this core until an interrupt.
+    if(found == 0){
       asm volatile("wfi");
     }
   }
