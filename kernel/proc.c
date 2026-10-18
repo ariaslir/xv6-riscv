@@ -590,7 +590,7 @@ scheduler(void)
           printk("Process: %s\n", p->name);
           printk("PID: %d\n", p->pid);
           printk("Priority: %d\n", p->priority);
-          printk("Num Slots: %d\n\n", total);
+          printk("Num Slots: %d\n\n", p->num_epoch_slots);
         }
         // running per slots left
         while(p->state == RUNNABLE && slotsLeft > 0){
