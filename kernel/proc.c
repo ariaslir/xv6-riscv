@@ -588,7 +588,7 @@ scheduler(void)
           slotsLeft--; // decrement the slots per used slot
           if(mode == 1){
             // needs to see if in debug mode to print??
-            printk("running for whole turn (Per slotsLeft)%d", slots);
+            printk("running for whole turn (Per slotsLeft). %d\n", slots);
           }
           //printk("running for whole turn (Per slotsLeft)");
           p->state = RUNNING;
