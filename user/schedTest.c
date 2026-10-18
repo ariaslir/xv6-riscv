@@ -50,12 +50,12 @@ int main(){
     int LIMIT = 1000000;
     // creating an array to set each priority for the forks
     int priorities[8] = {0, 0, 5, 5, 10, 10, 15, 15};
-    debug(0); // turn debug mode on
+    debug(1); // turn debug mode on
 
     //printf("Enter debug mode")
 
     for(int i = 0; i < 8; i++){
-        int pid = priority_fork(priorities[i]);        
+        int pid = priority_fork(priorities[i]);     
         if(pid < 0){
             printf("Failure");
             break;
