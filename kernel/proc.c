@@ -584,14 +584,15 @@ scheduler(void)
       // main changes from the scheduler happen here
       if(p->state == RUNNABLE && slotsLeft > 0){
         int slots = slotsLeft; // variable holder to hold original amount of slots
+        // running per slots left
         while(p->state == RUNNABLE && slotsLeft > 0){
           slotsLeft--; // decrement the slots per used slot
           if(mode == 1){
             // needs to see if in debug mode to print??
-            printk("Running process %s with PID %d and priority %d for %d/%d slots"
-            ,     p->name, p->pid, p->priority, slotsLeft, slots);
+            printk("Running process %s with PID %d and priority %d for %d/%d slots\n",
+                 p->name, p->pid, p->priority, slotsLeft, slots);
           }
-          //printk("running for whole turn (Per slotsLeft)");
+          printk("running for whole turn (Per slotsLeft)\n\n");
           p->state = RUNNING;
           c->proc = p;
           swtch(&c->context, &p->context);
