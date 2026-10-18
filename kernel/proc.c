@@ -537,14 +537,14 @@ scheduler(void)
 {
   struct proc *p;
   struct cpu *c = mycpu();
-  //int epoch = 0; // for epoch calculations
+  int epoch = 0; // for epoch round counter
 
   c->proc = 0;
   for(;;){
 
     intr_on();
     intr_off();
-    int epoch = 0;
+    //int epoch = 0;
     int found = 0;
     int total = 0; // will hold sum of runnable process
 
@@ -575,20 +575,26 @@ scheduler(void)
       }
       release(&p->lock);
     }
-
+    // final loop and will print the data here
+    // main loop
     for(p = proc; p < &proc[NPROC]; p++){
       acquire(&p->lock);
       int slotsLeft = p->num_epoch_slots;
 
       // main changes from the scheduler happen here
       if(p->state == RUNNABLE && slotsLeft > 0){
-        p->state = RUNNING;
-        c->proc = p;
-        swtch(&c->context, &p->context);
+        slotsLeft--; // decrement the slots per used slot
 
-        mycpu()->intena = 0;
-        c->proc = 0;
-        found = 1;
+        while(p->state == RUNNABLE && slotsLeft > 0){
+          printk("running for whole turn (Per slotsLeft)");
+          p->state = RUNNING;
+          c->proc = p;
+          swtch(&c->context, &p->context);
+
+          mycpu()->intena = 0;
+          c->proc = 0;
+          found = 1;
+        }
       }
       release(&p->lock); // always
     }
