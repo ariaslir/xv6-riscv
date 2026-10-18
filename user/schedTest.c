@@ -68,6 +68,9 @@ int main(){
     }
     // printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
     // reset debug
+    while(wait(0) > 0){
+        
+    }
     debug(0);
     exit(0);
 }
