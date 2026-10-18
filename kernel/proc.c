@@ -551,7 +551,7 @@ scheduler(void)
     // 20-p_i in formula
     for(p = proc; p < &proc[NPROC]; p++){
       acquire(&p->lock); // always 
-      total = 0;
+      //total = 0;
       if(p->state == RUNNABLE){
         total += 20 - p->priority; // denominator (20-p_i) for every RUNNABLE process
       }
