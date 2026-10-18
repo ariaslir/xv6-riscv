@@ -583,12 +583,12 @@ scheduler(void)
 
       // main changes from the scheduler happen here
       if(p->state == RUNNABLE && slotsLeft > 0){
-        slotsLeft--; // decrement the slots per used slot
-
+        int slots = slotsLeft; // variable holder to hold original amount of slots
         while(p->state == RUNNABLE && slotsLeft > 0){
+          slotsLeft--; // decrement the slots per used slot
           if(mode == 1){
             // needs to see if in debug mode to print??
-            printk("running for whole turn (Per slotsLeft)");
+            printk("running for whole turn (Per slotsLeft)%d", slots);
           }
           //printk("running for whole turn (Per slotsLeft)");
           p->state = RUNNING;
