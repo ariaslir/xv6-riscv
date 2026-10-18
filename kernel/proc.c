@@ -566,6 +566,10 @@ scheduler(void)
     if(mode == 1){
       epoch++; // counter for when the scheduler found a RUNNABLE process
       printk("====================Epoch #%d=======================\n", epoch);
+      printk("Process: %s\n", p->name);
+      printk("PID: %d\n", p->pid);
+      printk("Priority: %d\n", p->priority);
+      printk("Num Slots: %d\n", total);
     }
     // full formula using above total declaration
     for(p = proc; p < &proc[NPROC]; p++){
@@ -580,7 +584,7 @@ scheduler(void)
     for(p = proc; p < &proc[NPROC]; p++){
       acquire(&p->lock);
       int slotsLeft = p->num_epoch_slots;
-
+      
       // main changes from the scheduler happen here
       if(p->state == RUNNABLE && slotsLeft > 0){
         int slots = slotsLeft; // variable holder to hold original amount of slots
@@ -592,7 +596,6 @@ scheduler(void)
             printk("Running process %s with PID %d and priority %d for %d/%d slots\n",
                  p->name, p->pid, p->priority, slotsLeft, slots);
           }
-          printk("running for whole turn (Per slotsLeft)\n\n");
           p->state = RUNNING;
           c->proc = p;
           swtch(&c->context, &p->context);
