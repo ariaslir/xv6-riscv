@@ -52,6 +52,8 @@ int main(){
     int priorities[8] = {0, 0, 5, 5, 10, 10, 15, 15};
     debug(1); // turn debug mode on
 
+    printf("Enter debug mode")
+
     for(int i = 0; i < 8; i++){
         int pid = priority_fork(priorities[i]);        
         if(pid < 0){
@@ -71,6 +73,6 @@ int main(){
     while(wait(0) > 0){
 
     }
-    debug(0); // i am resetting debug mode that is most likely why it is only printing for one
+    //debug(0); // i am resetting debug mode that is most likely why it is only printing for one
     exit(0);
 }
