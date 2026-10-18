@@ -563,8 +563,8 @@ scheduler(void)
       continue;
     }
 
-    epoch++; // counter for when the scheduler found a RUNNABLE process
     if(mode == 1){
+      epoch++; // counter for when the scheduler found a RUNNABLE process
       printk("====================Epoch #%d=======================\n", epoch);
     }
     // full formula using above total declaration
