@@ -586,7 +586,11 @@ scheduler(void)
         slotsLeft--; // decrement the slots per used slot
 
         while(p->state == RUNNABLE && slotsLeft > 0){
-          printk("running for whole turn (Per slotsLeft)");
+          if(mode == 1){
+            // needs to see if in debug mode to print??
+            printk("running for whole turn (Per slotsLeft)");
+          }
+          //printk("running for whole turn (Per slotsLeft)");
           p->state = RUNNING;
           c->proc = p;
           swtch(&c->context, &p->context);
