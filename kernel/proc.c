@@ -558,7 +558,7 @@ scheduler(void)
 
     epoch++; // counter for when the scheduler found a RUNNABLE process
     if(mode == 1){
-      printf("====================Epoch #%d=======================\n", epoch);
+      printk("====================Epoch #%d=======================\n", epoch);
     }
     // full formula using above total declaration
     for(p = proc; p < &proc[NPROC]; p++){
