@@ -557,11 +557,11 @@ scheduler(void)
       }
       release(&p->lock); // always
     }
-
-    if(total == 0){
-      asm volatile("wfi");
-      continue;
-    }
+    // // nothing remains
+    // if(total == 0){
+    //   asm volatile("wfi");
+    //   continue;
+    // }
 
     if(mode == 1){
       epoch++; // counter for when the scheduler found a RUNNABLE process
@@ -572,9 +572,6 @@ scheduler(void)
       acquire(&p->lock);
       if(p->state == RUNNABLE){
         p->num_epoch_slots = 40 * (20 - p->priority) / total;
-      }
-      else{
-        p->num_epoch_slots = 0;
       }
       release(&p->lock);
     }
