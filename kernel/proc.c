@@ -573,6 +573,9 @@ scheduler(void)
       if(p->state == RUNNABLE){
         p->num_epoch_slots = 40 * (20 - p->priority) / total;
       }
+      else{
+        p->num_epoch_slots = 0;
+      }
       release(&p->lock);
     }
     // final loop and will print the data here
