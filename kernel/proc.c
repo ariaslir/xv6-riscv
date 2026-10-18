@@ -537,19 +537,21 @@ scheduler(void)
 {
   struct proc *p;
   struct cpu *c = mycpu();
-  int epoch = 0; // for epoch calculations
+  //int epoch = 0; // for epoch calculations
 
   c->proc = 0;
   for(;;){
 
     intr_on();
     intr_off();
+    int epoch = 0;
     int found = 0;
     int total = 0; // will hold sum of runnable process
 
     // 20-p_i in formula
     for(p = proc; p < &proc[NPROC]; p++){
       acquire(&p->lock); // always 
+      total = 0;
       if(p->state == RUNNABLE){
         total += 20 - p->priority; // denominator (20-p_i) for every RUNNABLE process
       }
