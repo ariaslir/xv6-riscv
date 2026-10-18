@@ -566,10 +566,6 @@ scheduler(void)
     if(mode == 1){
       epoch++; // counter for when the scheduler found a RUNNABLE process
       printk("====================Epoch #%d=======================\n", epoch);
-      printk("Process: %s\n", p->name);
-      printk("PID: %d\n", p->pid);
-      printk("Priority: %d\n", p->priority);
-      printk("Num Slots: %d\n", total);
     }
     // full formula using above total declaration
     for(p = proc; p < &proc[NPROC]; p++){
@@ -577,6 +573,10 @@ scheduler(void)
       if(p->state == RUNNABLE){
         p->num_epoch_slots = 40 * (20 - p->priority) / total;
       }
+      printk("Process: %s\n", p->name);
+      printk("PID: %d\n", p->pid);
+      printk("Priority: %d\n", p->priority);
+      printk("Num Slots: %d\n\n", p->num_epoch_slots);
       release(&p->lock);
     }
     // final loop and will print the data here
