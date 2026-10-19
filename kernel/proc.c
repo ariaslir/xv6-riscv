@@ -597,7 +597,7 @@ scheduler(void)
           slotsLeft--; // decrement the slots per used slot
           if(mode == 1){
             // needs to see if in debug mode to print??
-            printk("Running process %s with PID %d and priority %d for %d/%d slots\n\n",
+            printk("Running process %s with PID %d and priority %d for %d/%d slots\n",
                  p->name, p->pid, p->priority, slotsLeft, slots);
           }
           p->state = RUNNING;
