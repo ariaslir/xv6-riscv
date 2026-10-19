@@ -323,7 +323,7 @@ priority_fork(int priority)
   if((np = allocproc()) == 0){
     return -1;
   }
-  np->priority = 10; // using the child process instead
+  np->priority = priority; // using the child process instead
   np->num_epoch_slots = 0;
   // copy user memroy from parent to child
   if(uvmcopy(p->pagetable, np->pagetable, p->sz) < 0){
