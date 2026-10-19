@@ -77,11 +77,11 @@ int main(){
             // in child fork
             //printf("Process: %d\n", getpid());
             printf("Number of Armstrong Numbers between 2 and %d: %d\nTime for process to complete: %d ticks\n\n",
-                 uptime(), LIMIT, armstrongCheck(LIMIT));
+                LIMIT, armstrongCheck(LIMIT), uptime());
             //printf("Time for process to complete: %d ticks\n\n", uptime());
             exit(0);
         }
-        printf("Forking a process with PID: %d and Prioritiy: %d\n\n", pid, priorities[i]);
+        printf("Forking a process with PID: %d and Priority: %d\n\n", pid, priorities[i]);
 
     }
     // printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
