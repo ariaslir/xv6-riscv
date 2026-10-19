@@ -76,6 +76,6 @@ int main(){
     while(wait(0) > 0){
 
     }
-    //debug(0); // i am resetting debug mode that is most likely why it is only printing for one
+    debug(0); // i am resetting debug mode that is most likely why it is only printing for one
     exit(0);
 }
