@@ -56,7 +56,7 @@ int main(){
 
     for(int i = 0; i < 8; i++){
         int pid = priority_fork(priorities[i]);    
-        printf("Process: %d\n", getpid()); 
+        //printf("Process: %d\n", getpid()); 
         if(pid < 0){
             printf("Failure");
             break;
