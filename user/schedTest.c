@@ -62,7 +62,8 @@ int main(){
         }
         if(pid == 0){
             // in child fork
-            printf("\nProcess: %d\n", getpid());
+            printf("\n");
+            printf("Process: %d\n", getpid());
             printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
             printf("Time for process to complete: ticks\n\n");
             exit(0);
