@@ -509,6 +509,12 @@ scheduler(void)
         // Switch to chosen process.  It is the process's job
         // to release its lock and then reacquire it
         // before jumping back to us.
+        //for debug output in original scheduler
+        if(mode == 1){
+          printk("Running process %s with PID %d and priority %d\n",
+                  p->name, p->pid, p->priority);
+        }
+
         p->state = RUNNING;
         c->proc = p;
         swtch(&c->context, &p->context);
