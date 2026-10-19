@@ -60,7 +60,7 @@ int main(){
     inputMode = atoi(buf);
     
     if(inputMode < 0 || inputMode > 1){
-        printf("Invalid selection, continuing with debug mode set to on (1)");
+        printf("Invalid selection, continuing with debug mode set to on (1)\n\n");
         inputMode = 1;
     }
 
