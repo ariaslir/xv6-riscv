@@ -323,7 +323,7 @@ priority_fork(int priority)
   if((np = allocproc()) == 0){
     return -1;
   }
-  np->priority = priority; // using the child process instead
+  np->priority = 10; // using the child process instead
   np->num_epoch_slots = 0;
   // copy user memroy from parent to child
   if(uvmcopy(p->pagetable, np->pagetable, p->sz) < 0){
@@ -598,7 +598,7 @@ scheduler(void)
           if(mode == 1){
             // needs to see if in debug mode to print??
             printk("Running process %s with PID %d and priority %d for %d/%d slots\n\n",
-                 p->name, p->pid, p->priority, slotsLeft, slots);
+                 p->name, p->pid, p->priority, slots - slotsLeft, slots);
           }
           p->state = RUNNING;
           c->proc = p;
