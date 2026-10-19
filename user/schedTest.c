@@ -50,7 +50,22 @@ int main(){
     int LIMIT = 1000000;
     // creating an array to set each priority for the forks
     int priorities[8] = {0, 0, 5, 5, 10, 10, 15, 15};
-    debug(1); // turn debug mode on
+    //debug(1); // turn debug mode on
+
+    // set up for user input of debug mode
+    char buf[16];
+    int inputMode = 0;
+    printf("Input debug mode (0 or 1): %d");
+    gets(buf, sizeof(buf));
+    inputMode = atoi(buf);
+    
+    if(inputMode < 0 || inputMode > 1){
+        printf("Invalid selection, continuing with debug mode set to on (1)");
+        inputMode = 1;
+        exit(0);
+    }
+
+    debug(inputMode);
 
     for(int i = 0; i < 8; i++){
         int pid = priority_fork(priorities[i]);    
