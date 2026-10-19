@@ -62,7 +62,6 @@ int main(){
     if(inputMode < 0 || inputMode > 1){
         printf("Invalid selection, continuing with debug mode set to on (1)");
         inputMode = 1;
-        exit(0);
     }
 
     debug(inputMode);
