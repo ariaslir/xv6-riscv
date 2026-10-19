@@ -55,14 +55,15 @@ int main(){
     //printf("Enter debug mode")
 
     for(int i = 0; i < 8; i++){
-        int pid = priority_fork(priorities[i]);     
+        int pid = priority_fork(priorities[i]);    
+        printf("Process: %d\n", getpid()); 
         if(pid < 0){
             printf("Failure");
             break;
         }
         if(pid == 0){
             // in child fork
-            printf("Process: %d\n", getpid());
+            //printf("Process: %d\n", getpid());
             printf("Number of Armstrong Numbers between 2 and %d: %d\n", LIMIT, armstrongCheck(LIMIT));
             printf("Time for process to complete: %d ticks\n\n", uptime());
             exit(0);
