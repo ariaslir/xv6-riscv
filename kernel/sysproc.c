@@ -134,7 +134,10 @@ sys_priority_fork(void)
   
   argint(0, &priority);  // getting priority
   
-  if(priority < 0 || priority > 19) return -1; // validates its 0-19 range
+  if(priority < 0 || priority > 19){
+    printk("Invalid Number, setting priority to 1\n");
+    priority = 1; // to continue in debug mode
+  }  // validates its 0-19 range
 
   return priority_fork(priority);
 }
