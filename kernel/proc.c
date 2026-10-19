@@ -271,7 +271,7 @@ kfork(void)
     return -1;
   }
 
-  p->priority = 10; // setting priority to default 10
+  np->priority = 10; // setting priority to default 10
   np->num_epoch_slots = 0; // setting default num_epoch_slots to 0 for the child process
 
   // Copy user memory from parent to child.
