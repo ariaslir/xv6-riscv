@@ -1,6 +1,5 @@
 #include "kernel/types.h"
 #include "user/user.h"
-#include <stdio.h>
 
 // function to get the number of digits in the number
 int numDigits(int n){
