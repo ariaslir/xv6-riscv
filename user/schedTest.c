@@ -55,7 +55,7 @@ int main(){
     // set up for user input of debug mode
     char buf[16];
     int inputMode = 0;
-    printf("Input debug mode (0 or 1): %d");
+    printf("Input debug mode (0 or 1): ");
     gets(buf, sizeof(buf));
     inputMode = atoi(buf);
     
