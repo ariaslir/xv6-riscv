@@ -110,3 +110,9 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+uint64
+sys_trackframe(void)
+{
+  return trackframe(myproc()->pagetable);
+}
