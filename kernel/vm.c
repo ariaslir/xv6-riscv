@@ -280,10 +280,10 @@ freewalk(pagetable_t pagetable)
 }
 
 
-int
+uint64
 trackframes(pagetable_t pagetable)
 {
-  int count = 0; // variable to get the count of the pagetable
+  uint64 count = 0; // variable to get the count of the pagetable
   // iterate through the page table
   for (int i = 0; i < 512; i++) {
     pte_t pte = pagetable[i];
@@ -298,6 +298,7 @@ trackframes(pagetable_t pagetable)
       count++;
     }
   }
+  return count;
 }
 
 // Free user memory pages,
