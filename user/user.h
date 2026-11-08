@@ -25,7 +25,7 @@ char *sys_sbrk(int, int);
 int pause(int);
 int uptime(void);
 int sync(void);
-int trackframe(int); // trackframe declaration
+int trackframes(int); // trackframe declaration
 
 // ulib.c
 int stat(const char *, struct stat *);

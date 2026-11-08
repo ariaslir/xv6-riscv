@@ -279,6 +279,27 @@ freewalk(pagetable_t pagetable)
   kfree((void *)pagetable);
 }
 
+
+int
+trackframes(pagetable_t pagetable)
+{
+  int count = 0; // variable to get the count of the pagetable
+  // iterate through the page table
+  for (int i = 0; i < 512; i++) {
+    pte_t pte = pagetable[i];
+    // following the same format as freewalk
+    if((pte & PTE_V) && (pte & (PTE_R | PTE_W | PTE_X)) == 0) {
+      uint64 child = PTE2PA(pte); 
+      // getting the count
+      count += trackframes((pagetable_t)child);
+    }
+    // once the leaf is reached, increment the count
+    else if(pte & PTE_V){
+      count++;
+    }
+  }
+}
+
 // Free user memory pages,
 // then free page-table pages.
 void

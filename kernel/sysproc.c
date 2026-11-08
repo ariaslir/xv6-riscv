@@ -112,7 +112,7 @@ sys_uptime(void)
 }
 
 uint64
-sys_trackframe(void)
+sys_trackframes(void)
 {
-  return trackframe(myproc()->pagetable);
+  return trackframes(myproc()->pagetable);
 }

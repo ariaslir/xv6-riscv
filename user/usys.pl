@@ -43,4 +43,4 @@ entry("sbrk");
 entry("pause");
 entry("uptime");
 entry("sync");
-entry("trackframe"); # for proj4
+entry("trackframes"); # for proj4
