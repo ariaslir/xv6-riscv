@@ -11,6 +11,10 @@ int main(void){
     int frames = trackframes();
     printf("Frames at start:%d\n", frames);
 
+    ptr[n] = block_alloc(28); //first allocation
+    printf("For testing (Chunk at):%p\n\n", ptr[n]);
+    n++; //move to the next slot
+
     int first = trackframes();
     printf("Frames after first allocation:%d\n", first);
 
@@ -21,10 +25,10 @@ int main(void){
         n++; //move to the next slot
 
         int new = trackframes();
-        printf("Frames after first allocation:%d\n", new);
+        printf("Frames after allocation:%d\n", new);
 
         if(new > first){
-            printf("Stop loop, testing");//testing
+            printf("Stop loop, testing\n");//testing
             break;
         }
     }   
