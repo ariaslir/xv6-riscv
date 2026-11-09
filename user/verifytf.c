@@ -11,7 +11,7 @@ int main(void){
     int frames = trackframes();
     printf("Frames at start:%d\n", frames);
 
-    ptr[n] = 28; //first allocation
+    ptr[n] = block_alloc(28); //first allocation
     n++; //move to the next slot
 
     int first = trackframes();
