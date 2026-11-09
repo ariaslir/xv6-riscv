@@ -130,7 +130,16 @@ block_alloc(int nbytes)
   if(npages == MAXPG){
     return 0;
   } 
-  return 0;
+
+  // getting a new page from the os
+  char *newPage = sbrk(PGSIZE);
+
+  //update values
+  pages[npages] = newPage;
+  pageSize[npages] = size;
+  used[npages][0] = 1;
+
+  return newPage;
 }
 
 // frees an allocation made from an allocated list

@@ -34,6 +34,5 @@ int main(void){
         printf("Freeing %p", ptr[i]);
     }
 
-
     exit(0);
 }
