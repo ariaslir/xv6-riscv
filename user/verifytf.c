@@ -11,6 +11,7 @@ int main(void){
     printf("First Allocation:");
 
     ptr[n] = block_alloc(28); //first allocation
+    void *ogPage = ptr[n]; // saving original page number from where we started
     printf("Allocated 32-byte chunk at %p\n\n", ptr[n]);
     n++; //move to the next slot
 
@@ -20,7 +21,7 @@ int main(void){
     // keep allocating until frames go up
     while(n < 200){
         ptr[n] = block_alloc(28); //first allocation
-        printf("Allocated 32-byte chunk at %p\n", ptr[n]);
+        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], ogPage);
         n++; //move to the next slot
 
         int new = trackframes();
