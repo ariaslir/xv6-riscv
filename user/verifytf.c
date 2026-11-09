@@ -28,10 +28,10 @@ int main(void){
         printf("Current page count: %d\n", new);
 
         if(new > first){
-            printf("Current page count: %d", new);
-            printf("Stop loop, testing\n");//testing
+            printf("Current page count: %d\n\n", new);
             break;
         }
+        printf("Frames allocated: %d\n\n", new);
     }   
 
     printf("=========START FREEING=========\n");
