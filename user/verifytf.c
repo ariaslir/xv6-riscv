@@ -31,8 +31,10 @@ int main(void){
             printf("Current page count: %d\n\n", new);
             break;
         }
-        printf("Frames allocated: %d\n\n", new);
     }   
+    //print final count of frames allocated
+    int final = trackframes();
+    printf("Frames allocated: %d\n\n", final);
 
     printf("=========START FREEING=========\n");
 
