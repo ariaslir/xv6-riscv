@@ -36,12 +36,12 @@ int main(void){
     // int final = trackframes();
     printf("Frames allocated: %d\n\n", n);
 
-    printf("=========START FREEING=========\n");
+    printf("=========START FREEING=========\n\n");
 
     // started at 1 to skip starting chunk
     for(int i = 1; i < n; i++){
         block_free(ptr[i]);
-        printf("Freed 32-byte chunk at %p\n", ptr[i]);
+        printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], ogPage);
     }
 
     exit(0);
