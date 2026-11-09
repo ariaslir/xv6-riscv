@@ -11,13 +11,29 @@ int main(void){
     int frames = trackframes();
     printf("Frames at start:%d\n", frames);
 
-    ptr[n] = block_alloc(28); //first allocation
-    printf("For testing (Chunk at):%p", ptr[n]);
-
-    n++; //move to the next slot
-
     int first = trackframes();
     printf("Frames after first allocation:%d\n", first);
+
+    // keep allocating until frames go up
+    while(n < 200){
+        ptr[n] = block_alloc(28); //first allocation
+        printf("For testing (Chunk at):%p\n", ptr[n]);
+        n++; //move to the next slot
+
+        int new = trackframes();
+        printf("Frames after first allocation:%d\n", new);
+
+        if(new > first){
+            printf("Stop loop, testing");//testing
+            break;
+        }
+    }   
+
+    for(int i = 0; i < n; i++){
+        free_alloc(ptr[i]);
+        printf("Freeing %d", ptr[i]);
+    }
+
 
     exit(0);
 }
