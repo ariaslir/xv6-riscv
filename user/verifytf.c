@@ -5,8 +5,19 @@
 
 int main(void){
 
+    int n = 0;
+    void *ptr[200];
+
     int frames = trackframes();
     printf("Frames at start:%d\n", frames);
+
+    ptr[n] = 28; //first allocation
+    n++; //move to the next slot
+
+    int first = trackframes();
+    printf("Frames after first allocation:%d\n", first);
+
+
 
     exit(0);
 }
