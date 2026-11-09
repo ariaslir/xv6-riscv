@@ -138,6 +138,7 @@ block_alloc(int nbytes)
   pages[npages] = newPage;
   pageSize[npages] = size;
   used[npages][0] = 1;
+  npages++; //increment the amount of pages
 
   return newPage;
 }
