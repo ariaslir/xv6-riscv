@@ -50,4 +50,4 @@ void printf(const char *, ...) __attribute__((format(printf, 1, 2)));
 void *malloc(uint);
 void free(void *);
 void *block_alloc(int);
-void free_alloc(void*);
+void block_free(void*);

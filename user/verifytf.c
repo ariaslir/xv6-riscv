@@ -30,7 +30,7 @@ int main(void){
     }   
 
     for(int i = 0; i < n; i++){
-        free_alloc(ptr[i]);
+        block_free(ptr[i]);
         printf("Freeing %p", ptr[i]);
     }
 
