@@ -150,7 +150,7 @@ UPROGS=\
 	$U/_forphan\
 	$U/_dorphan\
 	$U/_sync\
-	$U/_verifytf\ # added verifytf here instead of trackframes
+	$U/_verifytf\ 
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
