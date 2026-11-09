@@ -34,11 +34,12 @@ int main(void){
         }
     }   
 
-    printf("=========START FREEING=========");
+    printf("=========START FREEING=========\n");
 
-    for(int i = 0; i < n; i++){
+    // started at 1 to skip starting chunk
+    for(int i = 1; i < n; i++){
         block_free(ptr[i]);
-        printf("Freeing %p\n", ptr[i]);
+        printf("Freed 32-byte chunk at %p\n", ptr[i]);
     }
 
     exit(0);
