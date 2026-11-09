@@ -12,13 +12,12 @@ int main(void){
     printf("Frames at start:%d\n", frames);
 
     ptr[n] = block_alloc(28); //first allocation
+    printf("For testing (Chunk at):%p", ptr[n]);
+
     n++; //move to the next slot
 
     int first = trackframes();
     printf("Frames after first allocation:%d\n", first);
-
-    printf("For testing (Chunk at):%p", ptr[n]);
-
 
     exit(0);
 }
