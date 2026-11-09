@@ -33,8 +33,8 @@ int main(void){
         }
     }   
     //print final count of frames allocated
-    int final = trackframes();
-    printf("Frames allocated: %d\n\n", final);
+    // int final = trackframes();
+    printf("Frames allocated: %d\n\n", n);
 
     printf("=========START FREEING=========\n");
 
