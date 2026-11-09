@@ -88,3 +88,18 @@ malloc(uint nbytes)
         return 0;
   }
 }
+
+// allocates nbytes from a segragated list
+void * 
+block_alloc(int bytes)
+{
+
+}
+
+// frees an allocation made from an allocated list
+// needs the list that block_alloc returned
+void 
+block_free(void *ptr)
+{
+  
+}
