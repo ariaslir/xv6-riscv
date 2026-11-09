@@ -138,9 +138,10 @@ block_alloc(int nbytes)
 void 
 block_free(void *ptr)
 {
+  int memAddress = 0;
   for(int i = 0; i < npages; i++){
     for(int j = 0; j < PGSIZE / pageSize[i]; j++){
-      int memAddress = pages[i] + j * pageSize[i];
+      memAddress = pages[i] + j * pageSize[i];
       if(memAddress == ptr){
         used[i][j] = 0; // free up the used block
         return;
