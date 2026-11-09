@@ -89,10 +89,47 @@ malloc(uint nbytes)
   }
 }
 
+#define PGSIZE 4096
+#define MAXPG 16// 
+
+char *pages[MAXPG];
+int pageSize[MAXPG]; // chunk size that the page is used for 
+char used[MAXPG][256]; // used [i][j] = 1 if chunk j in page i is taken
+int npages = 0; //pages we have
+
+
 // allocates nbytes from a segragated list
 void * 
-block_alloc(int bytes)
-{
+block_alloc(int nbytes)
+{ 
+  //nbytes is how much space the caller asked for
+  if(nbytes <= 0){
+    return 0; // nothing to give
+  }
+  int size = 16; // starting smallest page size to allocate space from, double from here
+  while(size < nbytes){
+    size = size * 2;//keep doubling until enough space is found or allocated
+  }
+  if(size > PGSIZE){
+    return 0; // too big
+  }
+
+  for(int i = 0; i < npages; i++){
+    if(pageSize[i] == size){
+      for(int j = 0; j < PGSIZE / size; j++){
+        if(used[i][j] == 0){
+          used[i][j] = 1; // if it is 0 its free if its free then we mark it as used sicne it will be used
+          //pages[i] is the start address, j is chunk number
+          // j * size offset
+          return pages[i] + j * size; //gives the memory address
+        }
+      }
+    }
+  }
+  // we have hit the limit of pages to use
+  if(npages == MAXPG){
+    return 0;
+  } 
 
 }
 
@@ -101,5 +138,5 @@ block_alloc(int bytes)
 void 
 block_free(void *ptr)
 {
-  
+
 }
