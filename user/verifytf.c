@@ -17,6 +17,7 @@ int main(void){
     int first = trackframes();
     printf("Frames after first allocation:%d\n", first);
 
+    printf("For testing (Chunk at):%d", ptr[n]);
 
 
     exit(0);
