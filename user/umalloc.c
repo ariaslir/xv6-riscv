@@ -138,7 +138,7 @@ block_alloc(int nbytes)
 void 
 block_free(void *ptr)
 {
-  int memAddress = 0;
+  char *memAddress;
   for(int i = 0; i < npages; i++){
     for(int j = 0; j < PGSIZE / pageSize[i]; j++){
       memAddress = pages[i] + j * pageSize[i];
