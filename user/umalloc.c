@@ -130,7 +130,7 @@ block_alloc(int nbytes)
   if(npages == MAXPG){
     return 0;
   } 
-
+  return 0;
 }
 
 // frees an allocation made from an allocated list
