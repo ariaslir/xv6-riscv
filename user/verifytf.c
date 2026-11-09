@@ -31,7 +31,7 @@ int main(void){
 
     for(int i = 0; i < n; i++){
         free_alloc(ptr[i]);
-        printf("Freeing %d", ptr[i]);
+        printf("Freeing %p", ptr[i]);
     }
 
 
