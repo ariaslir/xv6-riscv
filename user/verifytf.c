@@ -24,7 +24,8 @@ int main(void){
         uint64 addr = (uint64)ptr[n];
         uint64 offset = addr % 4096;
         uint64 page = addr - offset;
-        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], page);
+        char *realPage = (char *)page;
+        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], realPage);
         n++; //move to the next slot
 
         int new = trackframes();
