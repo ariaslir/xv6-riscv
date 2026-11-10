@@ -43,6 +43,7 @@ int main(void){
         block_free(ptr[i]);
         printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], ogPage);
     }
+    printf("All pages freed.\n");
 
     exit(0);
 }
