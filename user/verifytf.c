@@ -44,8 +44,12 @@ int main(void){
 
     // start free
     for(int i = 0; i < n; i++){
+        void *page = ptr[0];//to start back at the ogPage before it got updated
+        if(ptr[i] == ogPage){
+            page = ogPage;
+        }
         block_free(ptr[i]);
-        printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], ogPage);
+        printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], page);
     }
     printf("All pages freed.\n");
 
