@@ -21,7 +21,7 @@ int main(void){
     while(n < 200){
         ptr[n] = block_alloc(28); //first allocation
         //manually calculating actual starting page for each print instead
-        uint64 addr = ptr[n];
+        uint64 addr = (uint64)ptr[n];
         uint64 offset = addr % 4096;
         uint64 page = addr - offset;
         printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], page);
