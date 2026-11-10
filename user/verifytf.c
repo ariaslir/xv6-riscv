@@ -32,7 +32,6 @@ int main(void){
         printf("Current page count: %d\n", new);
 
         if(new > first){
-            printf("Allocated 32-byte chunk at %p\n\n", ptr[n]);
             break;
         }
     }   
@@ -45,7 +44,11 @@ int main(void){
     // start free
     for(int i = 0; i < n; i++){
         block_free(ptr[i]);
-        printf("Freed 32-byte chunk at %p (page )\n", ptr[i]);
+        uint64 addr = (uint64)ptr[i];
+        uint64 offset = addr % 4096;
+        uint64 page = addr - offset;
+        char *realPage = (char *)page;
+        printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], realPage);
     }
     printf("All pages freed.\n");
 
