@@ -28,7 +28,7 @@ int main(void){
         if(new > first){
             ogPage = ptr[n - 1];// update the ogPage to get the new page
         }
-        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], ogPage);
+        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n - 1], ogPage);
         printf("Current page count: %d\n", new);
 
         if(new > first){
