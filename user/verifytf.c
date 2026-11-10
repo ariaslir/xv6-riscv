@@ -38,8 +38,8 @@ int main(void){
 
     printf("=========START FREEING=========\n\n");
 
-    // started at 1 to skip starting chunk
-    for(int i = 1; i < n; i++){
+    // start free
+    for(int i = 0; i < n; i++){
         block_free(ptr[i]);
         printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], ogPage);
     }
