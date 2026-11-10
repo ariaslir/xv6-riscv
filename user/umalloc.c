@@ -89,10 +89,10 @@ malloc(uint nbytes)
   }
 }
 
-#define PGSIZE 4096
-#define MAXPG 16// 
+#define PGSIZE 4096 // size of one page in bytes
+#define MAXPG 16// max pages
 
-char *pages[MAXPG];
+char *pages[MAXPG]; // start address of each page
 int pageSize[MAXPG]; // chunk size that the page is used for 
 char used[MAXPG][256]; // used [i][j] = 1 if chunk j in page i is taken
 int npages = 0; //pages we have
@@ -133,11 +133,15 @@ block_alloc(int nbytes)
 
   // getting a new page from the os
   char *newPage = sbrk(PGSIZE);
+  // no page check
+  if(newPage == SBRK_ERROR){
+    return 0; //exit
+  }
 
   //update values
   pages[npages] = newPage;
   pageSize[npages] = size;
-  used[npages][0] = 1;
+  used[npages][0] = 1; // sets the start address to taken to move on
   npages++; //increment the amount of pages
 
   return newPage;
