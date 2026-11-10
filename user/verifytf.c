@@ -11,7 +11,6 @@ int main(void){
     printf("First Allocation:");
 
     ptr[n] = block_alloc(28); //first allocation
-    void *ogPage = ptr[n]; // saving original page number from where we started
     printf("Allocated 32-byte chunk at %p\n\n", ptr[n]);
     n++; //move to the next slot
 
@@ -21,20 +20,20 @@ int main(void){
     // keep allocating until frames go up
     while(n < 200){
         ptr[n] = block_alloc(28); //first allocation
+        //manually calculating actual starting page for each print instead
+        int addr = ptr[n];
+        int offset = addr % 4096;
+        int page = addr - offset;
+        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], page);
         n++; //move to the next slot
 
         int new = trackframes();
-
-        if(new > first){
-            ogPage = ptr[n - 1];// update the ogPage to get the new page
-        }
-        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n - 1], ogPage);
         printf("Current page count: %d\n", new);
 
         if(new > first){
+            printf("Allocated 32-byte chunk at %p\n\n", ptr[n]);
             break;
         }
-
     }   
     //print final count of frames allocated
     // int final = trackframes();
@@ -44,12 +43,8 @@ int main(void){
 
     // start free
     for(int i = 0; i < n; i++){
-        void *page = ptr[0];//to start back at the ogPage before it got updated
-        if(ptr[i] == ogPage){
-            page = ogPage;
-        }
         block_free(ptr[i]);
-        printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], page);
+        printf("Freed 32-byte chunk at %p (page )\n", ptr[i]);
     }
     printf("All pages freed.\n");
 
