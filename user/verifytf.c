@@ -24,6 +24,7 @@ int main(void){
         uint64 addr = (uint64)ptr[n];
         uint64 offset = addr % 4096;
         uint64 page = addr - offset;
+        // convert the page address from a number back to a pointer
         char *realPage = (char *)page;
         printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], realPage);
         n++; //move to the next slot
@@ -47,6 +48,7 @@ int main(void){
         uint64 addr = (uint64)ptr[i];
         uint64 offset = addr % 4096;
         uint64 page = addr - offset;
+        // convert the page address from a number back to a pointer
         char *realPage = (char *)page;
         printf("Freed 32-byte chunk at %p (page %p)\n", ptr[i], realPage);
     }
