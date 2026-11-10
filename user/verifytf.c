@@ -28,7 +28,7 @@ int main(void){
         printf("Current page count: %d\n", new);
 
         if(new > first){
-            printf("Allocated 32-byte chunk at %p\n\n", ptr[n]);
+            printf("Allocated 32-byte chunk at %p\n\n", ptr[n - 1]);
             break;
         }
     }   
