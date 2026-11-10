@@ -21,10 +21,10 @@ int main(void){
     while(n < 200){
         ptr[n] = block_alloc(28); //first allocation
         //manually calculating actual starting page for each print instead
-        int addr = ptr[n];
-        int offset = addr % 4096;
-        int page = addr - offset;
-        printf("Allocated 32-byte chunk at %p (page %d)\n", ptr[n], page);
+        uint64 addr = ptr[n];
+        uint64 offset = addr % 4096;
+        uint64 page = addr - offset;
+        printf("Allocated 32-byte chunk at %p (page %p)\n", ptr[n], page);
         n++; //move to the next slot
 
         int new = trackframes();
